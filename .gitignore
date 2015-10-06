@@ -1,2 +1,15 @@
 .idea
 .vagrant
+.DS_Store
+.sass-cache
+*.codekit
+src/files
+.project
+.phpintel
+nbproject
+.settings
+main.css
+main.css.map
+_apigen.phar
+.vagrant
+vendor

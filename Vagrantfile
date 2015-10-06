@@ -6,10 +6,10 @@ VAGRANTFILE_API_VERSION = "2"
 $install = <<SCRIPT
 #!/bin/bash
 
-if [ -z /mapasculturais/Vagrantfile ]; then
-
+if [ ! -f /mapasculturais/Vagrantfile ]; then
+	echo "Não há arquivo Vagrant, clonando repositório do Mapas Culturais"
+	sudo apt-get install -y git
 	git clone https://github.com/hacklabr/mapasculturais /mapasculturais
-
 fi
 
 cd /mapasculturais/scripts/
@@ -21,7 +21,13 @@ SCRIPT
 $configure = <<SCRIPT
 
 cd /mapasculturais/scripts/
-./configure_vagrant.sh
+./configure_vagrant.sh /mapasculturais
+
+echo "COPIANDO ARQUIVO DE CONFIG PARA O TEMA"
+cp /vagrant/config/config-vagrant.php /mapasculturais/src/protected/application/conf/config.php
+
+echo "RECOMPILANDO SASS AGORA INCLUINDO O TEMA ATIVO"
+/mapasculturais/scripts/compile-sass.sh
     
 SCRIPT
 

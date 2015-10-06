@@ -3,4 +3,8 @@
 // --------------------------------------------------
 //## Compiles to main.css.
 
-
+@import "globals/all-globals";
+@import "modules/all-modules";
+@import "application/all-application";
+@import "components/all-components";
+@import "vendor/all-vendor";
